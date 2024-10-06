@@ -1,3 +1,4 @@
+# Insert PHP codes into the index.php
 <!-- 3. select all students -->
 <?php
 $query = "SELECT * FROM students"; //sql stmt
