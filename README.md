@@ -55,20 +55,36 @@ $pdo->exec("SET time_zone = '+08:00';");
 ```
 4.	SHOW CODE DEMONSTRATING HOW FETCH() IS USED. USE PRINT_R(). WITH <'pre'> TAG IN BETWEEN. 
 ```php
-<?php
-$query = "SELECT * FROM students
+<?php require_once 'core/dbConfig.php'; ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <?php
+  $query = "SELECT * FROM students
             WHERE students.student_id = 20"; //sql stmt
+  
+  $stmt = $pdo->prepare($query); //prepare sql
+  
+  if ($stmt->execute()) { //execute sql
+  
+    echo "<pre>";
+    print_r($stmt->fetch()); //to fetch all data
+    echo "<pre>";
+  }
 
-$stmt = $pdo->prepare($query); //prepare sql
+  ?>
 
-if ($stmt->execute()) { //execute sql
+</body>
 
-  echo "<pre>";
-  print_r($stmt->fetch()); //to fetch all data
-  echo "<pre>";
-}
-
-?>
+</html>
 ```
 5.	SHOW CODE DEMONSTRATING INSERTION OF RECORD TO YOUR DATABASE
 ```php
